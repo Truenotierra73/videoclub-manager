@@ -1,0 +1,36 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2">
+            <input type="text" ng-show="$ctrl.opcionSeleccionada.id! = 2" ng-model="$ctrl.buscador" class="form-control" placeholder="Buscar por..."
+                ng-change="$ctrl.buscar()">
+            <input type="date" ng-show="$ctrl.opcionSeleccionada.id === 2" ng-model="$ctrl.buscadorFec" class="form-control" ng-blur="$ctrl.buscar()">
+        </div>
+        <div class="col-md-2">
+            <select class="form-control" ng-options="opcion as opcion.nombre for opcion in $ctrl.cmbOpciones track by opcion.id" ng-model="$ctrl.opcionSeleccionada">
+            </select>
+        </div>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-striped ">
+            <!-- <caption>Peliculas Alquiladas</caption> -->
+            <tr>
+                <th>Fecha alquiler</th>
+                <th class="col-sm-3">Inventario</th>
+                <th class="col-sm-3">Pelicula</th>
+                <th class="col-sm-3">Nombre</th>
+                <th class="col-sm-3">Apellido</th>
+                <th>Fecha devolucion</th>
+                <th>Fecha</th>
+            </tr>
+            <tr class="list-group" ng-repeat="alq in $ctrl.alquileres">
+                <td>{{alq.rentalDate | date : 'dd/MM/yyyy'}}</td>
+                <td>{{alq.inventory.inventory_id}}</td>
+                <td>{{alq.inventory.film.titulo}}</td>
+                <td>{{alq.customer.nombre | lowercase}}</td>
+                <td>{{alq.customer.apellido | lowercase}}</td>
+                <td>{{alq.return_date | date : 'dd/MM/yyyy'}}</td>
+                <td>{{alq.last_update | date : 'dd/MM/yyyy'}}</td>
+            </tr>
+        </table>
+    </div>
+</div>

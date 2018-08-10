@@ -1,0 +1,72 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3 col-sm-4 col-xs-10">
+            <div class="input-group">
+                <span class="input-group-addon" id="sizing-addon2">
+                    <i class="fas fa-search"></i>
+                </span>
+                <!-- <span>
+                    <select class="form-control" ng-model="$ctrl.opcionSelec" ng-options="opcion as opcion.nombre for opcion in $ctrl.cmbOpciones track by opcion.id"></select>
+                </span> -->
+                <input ng-model="buscador" type="text" class="form-control" placeholder="Ingrese el texto aquí...">
+            </div>
+        </div>
+        <div class="col-md-2 col-sm-4 col-xs-2">
+            <button class="btn btn-success" ng-click="$ctrl.registrarNuevaPelicula()" type="button">
+                <span class="fas fa-plus"></span>
+            </button>
+            <!-- <button class="btn btn-danger" type="button"><span class="fas fa-minus"></span></button> -->
+        </div>
+        <!-- <div class="col-md-2">
+            <select class="form-control select-group" ng-model="$ctrl.opcionSelec" ng-options="opcion as opcion.nombre for opcion in $ctrl.cmbOpciones track by opcion.id"></select>
+        </div> -->
+    </div>
+    <br>
+    <div class="table-responsive" ng-init="$ctrl.actualizarPag()">
+        <table class="table table-bordered">
+            <tr>
+                <th class="text-center">ID</th>
+                <th class="text-center">Titulo</th>
+                <th class="text-center col-md-3">Texto</th>
+                <th class="text-center">Año Lanzamiento</th>
+                <th class="text-center">Idioma Original</th>
+                <th class="text-center">Subtítulo</th>
+                <th class="text-center">Duración Alquiler</th>
+                <th class="text-center">Tasa Alquiler</th>
+                <th class="text-center">Reemplazo</th>
+                <th class="text-center">Clasificación</th>
+                <th class="text-center">Fecha</th>
+                <th class="text-center">Características Especiales</th>
+                <th></th>
+            </tr>
+            <tr ng-repeat="peli in $ctrl.peliculas | filter : buscador">
+                <td class="text-center">{{peli.peliculaId}}</td>
+                <td class="text-center">{{peli.titulo | uppercase}}</td>
+                <td class="text-center">{{peli.texto | lowercase}}</td>
+                <td class="text-center">{{peli.anoLanzamiento}}</td>
+                <td class="text-center">{{peli.lenguajeOriginal.nombre}}</td>
+                <td class="text-center">{{peli.lenguaje.nombre}}</td>
+                <td class="text-center">{{peli.duracionAlquiler}}</td>
+                <td class="text-center">{{peli.tasaDeAlquiler | number : '3'}}</td>
+                <td class="text-center">{{peli.costoDeReemplazo | currency : '$' : 0}}</td>
+                <td class="text-center">{{peli.clasificacion}}</td>
+                <td class="text-center">{{peli.ultimaActualizacion | date : 'dd/MM/yyyy'}}</td>
+                <td class="text-center">{{peli.specialFeatures}}</td>
+                <td class="text-center">
+                    <span class="btn btn-primary btn-xs" ng-click="$ctrl.seleccionarPelicula(peli)">
+                        <i class="fas fa-search"></i>
+                    </span>
+                </td>
+            </tr>
+            <tr ng-if="$ctrl.peliculas.length ===  0">
+                <td class="text-center" colspan="11">No hay datos</td>
+            </tr>
+        </table>
+    </div>
+    <div class="text-center">
+        <ul uib-pagination boundary-links="true" ng-model="$ctrl.paginaActual" ng-click="$ctrl.asignarPagina($ctrl.paginaActual)"
+            total-items="$ctrl.resultado.totalElements" max-size="$ctrl.maxSize" items-per-page="$ctrl.itemsPorPagina" class="pagination-sm"
+            previous-text="Anterior" next-text="Siguiente" first-text="Primero" last-text="Último">
+        </ul>
+    </div>
+</div>

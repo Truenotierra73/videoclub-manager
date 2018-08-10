@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+
+<head>
+    <!-- META -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="application-name" content="VideoClub Manager v1.0.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Desarrollado por: Agustín Bollati y Matías Genre.">
+    <meta name="description" content="VideoClub Manager es una página web que permite administrar películas, administrar lenguajes y gestionar alquileres de las películas.">
+    <meta name="keywords" content="VideoClub, video, video club, videoclub manager, alquileres peliculas">
+    <meta name="robots" content="all">
+
+    <!-- LINKS -->
+    <link rel="icon" type="image/ico" href="img/VideoClub-Manager-3.ico">
+    <link rel="stylesheet" href="css/video-club-manager-css.css" type="text/css">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="bower_components/components-font-awesome/css/fontawesome-all.min.css" type="text/css">
+    <link rel="stylesheet" href="bower_components/animate.css/animate.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Dancing Script" type="text/css">
+
+    <title>VideoClub Manager</title>
+</head>
+
+<body ng-app="videoclub-manager">
+    <!-- Etiqueta de manejo de rutas a través de distintos estados. -->
+    <ui-view></ui-view>
+    <!-- SCRIPTS -->
+    <!-- Componentes/Librerías externos -->
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.min.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="bower_components/moment/moment.js"></script>
+    <script src="bower_components/angular-moment/angular-moment.min.js"></script>
+
+    <!-- Archivos/Módulos de configuración -->
+    <script src="js/app.js"></script>
+    <script src="js/components.js"></script>
+    <script src="js/directives.js"></script>
+    <script src="js/factories.js"></script>
+    <script src="js/routes.js"></script>
+    <script src="js/services.js"></script>
+
+    <!-- Seguridad -->
+    <script src="content/seguridad/comp-inicio-sesion.js"></script>
+    <script src="content/seguridad/route-inicio-sesion.js"></script>
+
+    <!-- Templates/Componentes reusables -->
+    <script src="content/templates/comp-nav-bar.js"></script>
+    <script src="content/templates/route-nav-bar.js"></script>
+    <script src="content/modales/modal-mensaje.js"></script>
+    <script src="content/modales/progress-bar.js"></script>
+
+    <!-- Página inicial -->
+    <script src="content/home/comp-home.js"></script>
+    <script src="content/home/route-home.js"></script>
+
+    <!-- Administración de Películas -->
+    <script src="content/administrar-peliculas/comp-listar-peliculas.js"></script>
+    <script src="content/administrar-peliculas/route-listar-peliculas.js"></script>
+    <script src="content/administrar-peliculas/comp-registrar-pelicula.js"></script>
+    <script src="content/administrar-peliculas/route-registrar-pelicula.js"></script>
+    <script src="content/administrar-peliculas/comp-modificar-pelicula.js"></script>
+    <script src="content/administrar-peliculas/route-modificar-pelicula.js"></script>
+
+    <!-- Gestión de Alquileres -->
+    <script src="content/gestion-alquileres/comp-listar-alquileres.js"></script>
+    <script src="content/gestion-alquileres/route-listar-alquileres.js"></script>
+
+    <!-- Administración de Lenguajes -->
+    <script src="content/administrar-lenguajes/comp-registrar-lenguaje.js"></script>
+    <script src="content/administrar-lenguajes/route-registrar-lenguaje.js"></script>
+    <script src="content/administrar-lenguajes/comp-modifcar-lenguaje.js"></script>
+    <script src="content/administrar-lenguajes/route-modificar-lenguaje.js"></script>
+
+    <!-- Factories (Fábricas) -->
+    <script src="content/factories/alquileres.js"></script>
+    <script src="content/factories/peliculas.js"></script>
+    <script src="content/factories/lenguajes.js"></script>
+
+    <!-- Services (Servicios) -->
+    <script src="content/services/servicio-mensajes.js"></script>
+    <script src="content/services/servicio-progress-bar.js"></script>
+</body>
+</html>

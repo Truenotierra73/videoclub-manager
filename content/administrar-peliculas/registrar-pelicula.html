@@ -1,0 +1,144 @@
+<div class="container">
+    <div class="row">
+        <h3>Registrar Película</h3>
+        <hr>
+    </div>
+    <div class="row">
+        <form name="formPelicula">
+            <div class="col-md-4 col-sm-5 col-xs-12">
+                <div class="form-group has-feedback" ng-class="{ 'has-success': formPelicula.tituloPelicula.$valid && !formPelicula.tituloPelicula.$pristine && 
+                    formPelicula.tituloPelicula.$dirty, 'has-error': formPelicula.tituloPelicula.$invalid && !formPelicula.tituloPelicula.$pristine || 
+                    formPelicula.tituloPelicula.$touched && formPelicula.tituloPelicula.$viewValue === null }">
+                    <label class="control-label" for="idTituloPelicula">*Titulo</label>
+                    <input name="tituloPelicula" id="idTituloPelicula" type="text" class="form-control" placeholder="Ingrese título de la película"
+                        ng-model="$ctrl.pelicula.titulo" required>
+                    <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="formPelicula.tituloPelicula.$valid && !formPelicula.tituloPelicula.$pristine && 
+                        formPelicula.tituloPelicula.$dirty" aria-hidden="true"></span>
+                    <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="formPelicula.tituloPelicula.$invalid && !formPelicula.tituloPelicula.$pristine || 
+                        formPelicula.tituloPelicula.$touched && formPelicula.tituloPelicula.$viewValue === null" aria-hidden="true"></span>
+                </div>
+            </div>
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="form-group has-feedback" ng-class="{ 'has-success': formPelicula.descPelicula.$viewValue !== '' && formPelicula.descPelicula.$dirty && 
+                        !formPelicula.descPelicula.$pristine, 'has-warning': (formPelicula.descPelicula.$viewValue === null || formPelicula.descPelicula.$viewValue === '') && formPelicula.descPelicula.$touched }">
+                    <label class="control-label" for="idDescripcionPelicula">Descripción</label>
+                    <input name="descPelicula" id="idDescripcionPelicula" type="text" class="form-control" placeholder="Ingrese la descripción de la película"
+                        ng-model="$ctrl.pelicula.texto">
+                    <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="formPelicula.descPelicula.$viewValue !== '' && formPelicula.descPelicula.$dirty && !formPelicula.descPelicula.$pristine"
+                        aria-hidden="true"></span>
+                    <span class="glyphicon glyphicon-warning-sign form-control-feedback" ng-show="(formPelicula.descPelicula.$viewValue === null || 
+                        formPelicula.descPelicula.$viewValue === '') && formPelicula.descPelicula.$touched" aria-hidden="true"></span>
+                </div>
+            </div>
+            <div class="col-md-2 col-sm-2 col-xs-4">
+                <div class="form-group has-feedback" ng-class="{ 'has-success': formPelicula.anoLanzamiento.$viewValue !== '' && formPelicula.anoLanzamiento.$dirty && 
+                        !formPelicula.anoLanzamiento.$pristine && formPelicula.anoLanzamiento.$viewValue >= 1950, 'has-warning': formPelicula.anoLanzamiento.$viewValue === '' || formPelicula.anoLanzamiento.$viewValue < 1950 && formPelicula.anoLanzamiento.$touched }">
+                    <label class="control-label" for="idAnoLanzamiento">Año de Lanzamiento</label>
+                    <input name="anoLanzamiento" id="idAnoLanzamiento" type="number" min="1950" class="form-control" ng-model="$ctrl.pelicula.anoLanzamiento">
+                    <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="formPelicula.anoLanzamiento.$viewValue !== '' && formPelicula.anoLanzamiento.$dirty && 
+                        !formPelicula.anoLanzamiento.$pristine && formPelicula.anoLanzamiento.$viewValue >= 1950" aria-hidden="true"></span>
+                    <span class="glyphicon glyphicon-warning-sign form-control-feedback" ng-show="formPelicula.anoLanzamiento.$viewValue === '' || 
+                        formPelicula.anoLanzamiento.$viewValue < 1950 && formPelicula.anoLanzamiento.$touched" aria-hidden="true"></span>
+                </div>
+            </div>
+            <div class="col-md-2 col-sm-2 col-xs-4">
+                <div class="form-group has-feedback" ng-class="{ 'has-success': formPelicula.lenguajeOriginal.$valid, 'has-error': formPelicula.lenguajeOriginal.$invalid }">
+                    <label class="control-label" for="idLenguajeOriginal">*Lenguaje Original</label>
+                    <select name="lenguajeOriginal" id="idLenguajeOriginal" class="form-control" ng-model="$ctrl.lenguajeOriginalSelec" ng-change="$ctrl.seleccionarLenguaje($ctrl.lenguajeOriginalSelec)"
+                        ng-options="lenguajeOriginal as lenguajeOriginal.nombre for lenguajeOriginal in $ctrl.lenguajes track by lenguajeOriginal.lenguajeId"
+                        required></select>
+                    <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="formPelicula.lenguajeOriginal.$valid" aria-hidden="true"></span>
+                    <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="formPelicula.lenguajeOriginal.$invalid" aria-hidden="true"></span>
+                </div>
+            </div>
+            <div class="col-md-2 col-sm-2 col-xs-4">
+                <div class="form-group has-feedback" ng-class="{ 'has-success': formPelicula.subtitulo.$valid, 'has-error': formPelicula.subtitulo.$invalid }">
+                    <label class="control-label" for="idSubtitulo">*Subtítulo</label>
+                    <select name="subtitulo" id="idSubtitulo" class="form-control" ng-model="$ctrl.subtituloSelec" ng-change="$ctrl.seleccionarSubtitulo($ctrl.subtituloSelec)"
+                        ng-options="subtitulo as subtitulo.nombre for subtitulo in $ctrl.lenguajes track by subtitulo.lenguajeId"
+                        required></select>
+                    <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="formPelicula.subtitulo.$valid" aria-hidden="true"></span>
+                    <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="formPelicula.subtitulo.$invalid" aria-hidden="true"></span>
+                </div>
+            </div>
+            <div class="col-md-2 col-sm-2 col-xs-4">
+                <div class="form-group has-feedback" ng-class="{ 'has-success': formPelicula.duracionAlquiler.$valid && formPelicula.duracionAlquiler.$dirty &&
+                        !formPelicula.duracionAlquiler.$pristine, 'has-error': formPelicula.duracionAlquiler.$invalid && !formPelicula.duracionAlquiler.$pristine || 
+                        formPelicula.duracionAlquiler.$touched && formPelicula.duracionAlquiler.$viewValue === null }">
+                    <label class="control-label" for="idDuracionAlquiler">*Duración Alquiler</label>
+                    <input name="duracionAlquiler" id="idDuracionAlquiler" type="number" min="1" class="form-control" ng-model="$ctrl.pelicula.duracionAlquiler"
+                        required>
+                    <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="formPelicula.duracionAlquiler.$valid && formPelicula.duracionAlquiler.$dirty && 
+                        !formPelicula.duracionAlquiler.$pristine" aria-hidden="true"></span>
+                    <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="formPelicula.duracionAlquiler.$invalid && !formPelicula.duracionAlquiler.$pristine || 
+                        formPelicula.duracionAlquiler.$touched && formPelicula.duracionAlquiler.$viewValue === null" aria-hidden="true"></span>
+                </div>
+            </div>
+            <div class="col-md-2 col-sm-2 col-xs-4">
+                <div class="form-group has-feedback" ng-class="{ 'has-success': formPelicula.tasaAlquiler.$valid && formPelicula.tasaAlquiler.$dirty &&
+                        !formPelicula.tasaAlquiler.$pristine, 'has-error': formPelicula.tasaAlquiler.$invalid && !formPelicula.tasaAlquiler.$pristine || 
+                        formPelicula.tasaAlquiler.$touched && formPelicula.tasaAlquiler.$viewValue === null }">
+                    <label class="control-label" for="idTasaAlquiler">*Costo Alquiler</label>
+                    <input name="tasaAlquiler" id="idTasaAlquiler" type="number" min="0.01" step="any" class="form-control" ng-model="$ctrl.pelicula.tasaDeAlquiler"
+                        required>
+                    <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="formPelicula.tasaAlquiler.$valid && formPelicula.tasaAlquiler.$dirty && 
+                        !formPelicula.tasaAlquiler.$pristine" aria-hidden="true"></span>
+                    <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="formPelicula.tasaAlquiler.$invalid && !formPelicula.tasaAlquiler.$pristine || 
+                        formPelicula.tasaAlquiler.$touched && formPelicula.tasaAlquiler.$viewValue === null" aria-hidden="true"></span>
+                </div>
+            </div>
+            <div class="col-md-2 col-sm-2 col-xs-4">
+                <div class="form-group has-feedback" ng-class="{ 'has-success': formPelicula.costoReemplazo.$valid && formPelicula.costoReemplazo.$dirty &&
+                        !formPelicula.costoReemplazo.$pristine, 'has-error': formPelicula.costoReemplazo.$invalid && !formPelicula.costoReemplazo.$pristine || 
+                        formPelicula.costoReemplazo.$touched && formPelicula.costoReemplazo.$viewValue === null }">
+                    <label class="control-label" for="idCostoReemplazo">*Costo de Reemplazo</label>
+                    <input name="costoReemplazo" id="idCostoReemplazo" type="number" min="0.01" step="any" class="form-control" ng-model="$ctrl.pelicula.costoDeReemplazo"
+                        required>
+                    <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="formPelicula.costoReemplazo.$valid && formPelicula.costoReemplazo.$dirty && 
+                        !formPelicula.costoReemplazo.$pristine" aria-hidden="true"></span>
+                    <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="formPelicula.costoReemplazo.$invalid && !formPelicula.costoReemplazo.$pristine || 
+                        formPelicula.costoReemplazo.$touched && formPelicula.costoReemplazo.$viewValue === null" aria-hidden="true"></span>
+                </div>
+            </div>
+            <div class="col-md-2 col-sm-2 col-xs-4">
+                <div class="form-group has-feedback" ng-class="{ 'has-success': formPelicula.clasificacion.$viewValue !== '' && formPelicula.clasificacion.$dirty && 
+                        !formPelicula.clasificacion.$pristine, 'has-warning': (formPelicula.clasificacion.$viewValue === null || 
+                        formPelicula.clasificacion.$viewValue === '') && formPelicula.clasificacion.$touched }">
+                    <label class="control-label" for="idClasificacion">Clasificación</label>
+                    <input name="clasificacion" id="idClasificacion" type="text" class="form-control" ng-model="$ctrl.pelicula.clasificacion">
+                    <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="formPelicula.clasificacion.$viewValue !== '' && formPelicula.clasificacion.$dirty && 
+                        !formPelicula.clasificacion.$pristine" aria-hidden="true"></span>
+                    <span class="glyphicon glyphicon-warning-sign form-control-feedback" ng-show="(formPelicula.clasificacion.$viewValue === null || 
+                        formPelicula.clasificacion.$viewValue === '') && formPelicula.clasificacion.$touched" aria-hidden="true"></span>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-8">
+                <div class="form-group has-feedback" ng-class="{ 'has-success': formPelicula.ultimaActualizacion.$viewValue !== '', 'has-warning': formPelicula.ultimaActualizacion.$viewValue === '' }">
+                    <label class="control-label" for="idUltimaActualizacion">Fecha</label>
+                    <input name="ultimaActualizacion" id="idUltimaActualizacion" type="date" class="form-control" ng-model="$ctrl.ultimaActualizacionSelec"
+                        ng-change="$ctrl.seleccionarUltimaActualizacion($ctrl.ultimaActualizacionSelec)">
+                    <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="formPelicula.ultimaActualizacion.$viewValue !== ''" aria-hidden="true"></span>
+                    <span class="glyphicon glyphicon-warning-sign form-control-feedback" ng-show="formPelicula.ultimaActualizacion.$viewValue === ''" aria-hidden="true"></span>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-8">
+                <div class="form-group has-feedback" ng-class="{ 'has-success': formPelicula.caracteristicasEspeciales.$viewValue !== '' && formPelicula.caracteristicasEspeciales.$dirty && 
+                        !formPelicula.caracteristicasEspeciales.$pristine, 'has-warning': (formPelicula.caracteristicasEspeciales.$viewValue === null || 
+                        formPelicula.caracteristicasEspeciales.$viewValue === '') && formPelicula.caracteristicasEspeciales.$touched }">
+                    <label class="control-label" for="idCaracteristicasEspeciales">Características Especiales</label>
+                    <input name="caracteristicasEspeciales" id="idCaracteristicasEspeciales" type="text" class="form-control" ng-model="$ctrl.pelicula.specialFeatures">
+                    <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="formPelicula.caracteristicasEspeciales.$viewValue !== '' && formPelicula.caracteristicasEspeciales.$dirty && 
+                        !formPelicula.caracteristicasEspeciales.$pristine" aria-hidden="true"></span>
+                    <span class="glyphicon glyphicon-warning-sign form-control-feedback" ng-show="(formPelicula.caracteristicasEspeciales.$viewValue === null || 
+                        formPelicula.caracteristicasEspeciales.$viewValue === '') && formPelicula.caracteristicasEspeciales.$touched" aria-hidden="true"></span>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="row pull-right">
+        <button type="button" class="btn btn-success" ng-click="$ctrl.guardar()">
+            <i class="fas fa-save"></i> Guardar</button>
+        <button type="button" class="btn btn-danger" ng-click="$ctrl.cancelar()">
+            <i class="fas fa-ban"></i> Cancelar</button>
+    </div>
+</div>

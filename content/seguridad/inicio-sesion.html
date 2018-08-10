@@ -1,0 +1,23 @@
+<section class="ini-sesion-out">
+    <div class="ini-sesion-in">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-md-offset-4">
+                    <img class="login-videomanager" src="img/VideoClub-Manager-4.png" alt="VideoClub">
+                    <!-- <h1 class="title-ini-sesion">Inicia sesión en VideoClub Manager</h1> -->
+                    <form class="form-ini-sesion">
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon1"><i class="fas fa-user"></i></span>
+                            <input ng-model="$ctrl.username" class="form-control" type="text" name="username" id="username" placeholder="Usuario">
+                        </div><br>
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon1"><i class="fas fa-key"></i></span>
+                            <input ng-model="$ctrl.password" class="form-control" type="password" name="password" id="password" placeholder="Contraseña">
+                        </div><br>
+                        <button id="btn-login" ng-click="$ctrl.iniciarSesion()" class="btn btn-primary" type="button"><span class="fas fa-sign-in-alt"></span> Iniciar sesión</button>
+                    </form>
+                </div>
+            </div>
+        </div>   
+    </div>
+</section>

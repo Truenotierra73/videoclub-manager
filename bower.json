@@ -1,0 +1,28 @@
+{
+  "name": "videoclub-manager",
+  "description": "",
+  "main": "",
+  "authors": [
+    "Agustín Bollati",
+    "Matías Genre"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.3.1",
+    "angular": "^1.7.2",
+    "bootstrap": "^3.3.7",
+    "angular-ui-router": "^1.0.19",
+    "angular-resource": "^1.7.2",
+    "components-font-awesome": "^5.0.6",
+    "angular-ui-bootstrap": "^2.5.6",
+    "angular-bootstrap": "^2.5.0"
+  }
+}

@@ -1,0 +1,1 @@
+angular.module('videoclub-manager.factories', []);

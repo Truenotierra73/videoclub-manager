@@ -1,0 +1,50 @@
+<div class="container">
+    <div class="row">
+        <h3>Modificar Lenguaje</h3>
+        <hr>
+    </div>
+    <div class="row">
+        <form name="formLenguaje">
+            <div class="col-md-2 col-sm-2 col-xs-4">
+                <div class="form-group has-feedback" ng-class="{ 'has-success': formLenguaje.lenguaje.$valid, 'has-error': formLenguaje.lenguaje.$invalid }">
+                    <label class="control-label" for="idLenguaje">*Lenguaje</label>
+                    <select name="lenguaje" id="idLenguaje" class="form-control" ng-model="$ctrl.lenguajeSelec" ng-change="$ctrl.seleccionarLenguaje($ctrl.lenguajeSelec)"
+                        ng-options="lenguaje as lenguaje.nombre for lenguaje in $ctrl.lenguajes track by lenguaje.lenguajeId"
+                        required></select>
+                    <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="formLenguaje.lenguaje.$valid && !formLenguaje.lenguaje.$pristine"
+                        aria-hidden="true"></span>
+                    <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="formLenguaje.lenguaje.$invalid" aria-hidden="true"></span>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-5 col-xs-12">
+                <div class="form-group has-feedback" ng-class="{ 'has-success': formLenguaje.nombreLenguaje.$valid && !formLenguaje.nombreLenguaje.$pristine && 
+                    formLenguaje.nombreLenguaje.$dirty, 'has-error': formLenguaje.nombreLenguaje.$invalid && !formLenguaje.nombreLenguaje.$pristine || 
+                    formLenguaje.nombreLenguaje.$touched && formLenguaje.nombreLenguaje.$viewValue === null }">
+                    <label class="control-label" for="idNombreLenguaje">*Nombre</label>
+                    <input name="nombreLenguaje" id="idNombreLenguaje" type="text" class="form-control" placeholder="Ingrese el nombre del lenguaje"
+                        ng-model="$ctrl.lenguaje.nombre" required>
+                    <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="formLenguaje.nombreLenguaje.$valid && !formLenguaje.nombreLenguaje.$pristine && 
+                    formLenguaje.nombreLenguaje.$dirty" aria-hidden="true"></span>
+                    <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="formLenguaje.nombreLenguaje.$invalid && !formLenguaje.nombreLenguaje.$pristine || 
+                    formLenguaje.nombreLenguaje.$touched && formLenguaje.nombreLenguaje.$viewValue === null" aria-hidden="true"></span>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-8">
+                <div class="form-group has-feedback" ng-class="{ 'has-success': formLenguaje.ultimaActualizacion.$viewValue !== '', 'has-warning': formLenguaje.ultimaActualizacion.$viewValue === '' }">
+                    <label class="control-label" for="idUltimaActualizacion">Fecha</label>
+                    <input name="ultimaActualizacion" id="idUltimaActualizacion" type="date" class="form-control" ng-model="$ctrl.ultimaActualizacionSelec"
+                        ng-change="$ctrl.seleccionarUltimaActualizacion($ctrl.ultimaActualizacionSelec)">
+                    <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="formLenguaje.ultimaActualizacion.$viewValue !== ''" aria-hidden="true"></span>
+                    <span class="glyphicon glyphicon-warning-sign form-control-feedback" ng-show="formLenguaje.ultimaActualizacion.$viewValue === '' || formLenguaje.ultimaActualizacion.$viewValue === null "
+                        aria-hidden="true"></span>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="row pull-right">
+        <button type="button" class="btn btn-success" ng-click="$ctrl.guardar()">
+            <i class="fas fa-save"></i> Guardar</button>
+        <button type="button" class="btn btn-danger" ng-click="$ctrl.cancelar()">
+            <i class="fas fa-ban"></i> Cancelar</button>
+    </div>
+</div>
