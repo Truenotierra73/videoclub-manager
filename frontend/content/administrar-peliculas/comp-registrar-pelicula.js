@@ -30,7 +30,7 @@ function CtrlRegistrarPelicula($state, moment, Peliculas, Lenguajes, ServicioMen
 
     // Funciones
     ctrl.seleccionarLenguaje = function(lenSel) {
-        ctrl.lenguajeSelec = lenSel;
+        ctrl.lenguajeOriginalSelec = lenSel;
     };
 
     ctrl.seleccionarSubtitulo = function (lenSel) {
